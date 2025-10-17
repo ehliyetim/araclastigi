@@ -221,41 +221,85 @@
   const totalSpan = document.getElementById('total');
   const correctCountSpan = document.getElementById('correctCount');
 
-  // JSON dosyasını yükle
-  fetch('quiz.json', { cache: 'no-store' })
+  // JSON dosyasını yükle - daha detaylı hata kontrolü
+  console.log('Quiz başlatılıyor...');
+  
+  fetch('quiz.json', { 
+    cache: 'no-store',
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
     .then(response => {
-      console.log('Fetch durumu:', response.status);
-      if (!response.ok) throw new Error(`HTTP ${response.status}: quiz.json yüklenemedi`);
-      return response.json();
-    })
-    .then(data => {
-      console.log('Veri yüklendi:', data.length, 'soru');
+      console.log('✅ Fetch tamamlandı');
+      console.log('Status:', response.status);
+      console.log('OK:', response.ok);
+      console.log('URL:', response.url);
       
-      if (!Array.isArray(data) || data.length === 0) {
-        throw new Error('JSON dosyası boş veya geçersiz');
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: Dosya bulunamadı veya erişilemiyor`);
+      }
+      return response.text(); // Önce text olarak al
+    })
+    .then(text => {
+      console.log('✅ Dosya içeriği alındı');
+      console.log('İçerik uzunluğu:', text.length, 'karakter');
+      console.log('İlk 200 karakter:', text.substring(0, 200));
+      
+      // JSON parse et
+      const data = JSON.parse(text);
+      console.log('✅ JSON parse edildi');
+      console.log('Soru sayısı:', data.length);
+      
+      if (!Array.isArray(data)) {
+        throw new Error('JSON bir dizi (array) değil!');
       }
       
+      if (data.length === 0) {
+        throw new Error('JSON dosyası boş!');
+      }
+      
+      // İlk soruyu kontrol et
+      console.log('İlk soru:', data[0]);
+      
       // JSON formatını uyarla
-      quizData = data.map(q => ({
-        id: q.id,
-        image: q.image_url,
-        question: q.question,
-        options: q.options.map(opt => opt.text),
-        correct: q.options.findIndex(opt => opt.isTrue),
-        explanation: q.description
-      }));
+      quizData = data.map((q, index) => {
+        console.log(`Soru ${index + 1} işleniyor...`);
+        return {
+          id: q.id,
+          image: q.image_url || '',
+          question: q.question || 'Soru metni yok',
+          options: q.options ? q.options.map(opt => opt.text) : [],
+          correct: q.options ? q.options.findIndex(opt => opt.isTrue) : -1,
+          explanation: q.description || 'Açıklama yok'
+        };
+      });
+      
+      console.log('✅ Tüm sorular hazırlandı');
+      console.log('Quiz verisi:', quizData);
       
       init();
     })
     .catch(error => {
-      console.error('Hata:', error);
+      console.error('❌ HATA:', error);
+      console.error('Hata detayı:', error.message);
+      console.error('Hata stack:', error.stack);
+      
       quizContent.innerHTML = `
         <div class="body">
-          <div class="question" style="text-align:center; color:var(--bad)">
+          <div class="question" style="text-align:center; color:var(--bad); line-height:1.8">
             ❌ Quiz soruları yüklenemedi!<br>
-            <span style="font-size:0.9rem; color:var(--muted); margin-top:8px; display:block">
-              ${error.message}
+            <span style="font-size:0.95rem; color:var(--muted); margin-top:12px; display:block">
+              <strong>Hata:</strong> ${error.message}
             </span>
+            <div style="font-size:0.85rem; color:var(--muted); margin-top:16px; text-align:left; max-width:500px; margin-left:auto; margin-right:auto;">
+              <strong>Kontrol edilecekler:</strong><br>
+              • quiz.json dosyası var mı?<br>
+              • Dosya adı doğru yazılmış mı? (büyük/küçük harf)<br>
+              • Dosya aynı klasörde mi?<br>
+              • JSON formatı geçerli mi?<br>
+              • Tarayıcı Console'una (F12) bakın<br>
+            </div>
           </div>
         </div>
       `;
