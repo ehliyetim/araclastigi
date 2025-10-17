@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lastik Bilgileri – Konu Kartları</title>
+  <style>
+    :root{
+      --bg:#0f1115; --fg:#e8eaed; --muted:#aab0b6; --card:#161a22; --card2:#1b2130;
+      --accent:#3ea6ff; --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),#0b0d12);
+      color:var(--fg);
+    }
+    header{
+      padding:28px 16px; text-align:center;
+    }
+    header h1{margin:0 0 8px;font-weight:800;letter-spacing:.2px}
+    header p{margin:0;color:var(--muted)}
+    .container{width:min(1100px,92vw); margin:0 auto 56px;}
+    .tools{display:flex; gap:10px; align-items:center; margin: 8px 0 18px;}
+    .search{
+      flex:1; padding:12px 14px; border-radius:12px; border:1px solid #2b3242; background:#101521; color:var(--fg);
+      outline:none;
+    }
+    .grid{
+      display:grid; gap:16px;
+      grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+    }
+    .card{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid #22293a; border-radius:var(--radius);
+      overflow:hidden; display:flex; flex-direction:column; min-height:100%;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .card:hover{ transform: translateY(-2px); border-color:#2d3750; box-shadow:0 10px 28px rgba(0,0,0,.35);}
+    .thumb{
+      aspect-ratio: 16/9; width:100%; object-fit:cover; background:#0c0f15;
+    }
+    .body{ padding:14px 14px 16px; display:flex; flex-direction:column; gap:10px; }
+    .title{ font-size:1.05rem; font-weight:700; line-height:1.25 }
+    .desc{ color:var(--fg); opacity:.95; font-size:.95rem; }
+    .desc p{margin:.5em 0}
+    .desc ul{margin:.5em 0 .2em 1.1em}
+    .badge{
+      align-self:flex-start; font-size:.72rem; color:#0b1220; background:var(--accent);
+      padding:4px 8px; border-radius:999px; font-weight:700; letter-spacing:.3px;
+    }
+    footer{color:#6f7884;text-align:center; padding:24px 0 36px; font-size:.85rem;}
+    .empty{color:#93a0af; text-align:center; padding:32px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lastik Bilgileri – Konu Kartları</h1>
+    <p>JSON’dan beslenen, tamamen statik bir kart galerisi</p>
+  </header>
+
+  <main class="container">
+    <div class="tools">
+      <input id="q" class="search" type="search" placeholder="Ara: başlık ve içerikte… (örn. basınç, diş derinliği)" />
+    </div>
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <div id="empty" class="empty" hidden>Uygun sonuç bulunamadı.</div>
+  </main>
+
+  <footer>
+    GitHub Pages için hazır • JSON dosyası: <code>topics.json</code>
+  </footer>
+
+  <script>
+    // Basit Markdown->HTML dönüştürücü (kalın, satır sonu, madde imleri)
+    function mdToHTML(md){
+      if(!md) return "";
+      // **kalın**
+      let html = md.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      // Madde işaretli satırları listeye çevir
+      const lines = html.split(/\r?\n/);
+      let out = "", inList=false;
+      for(const line of lines){
+        const m = line.match(/^\s*\*\s+(.*)$/);
+        if(m){
+          if(!inList){ out += "<ul>"; inList=true; }
+          out += `<li>${m[1]}</li>`;
+        }else{
+          if(inList){ out += "</ul>"; inList=false; }
+          if(line.trim()===""){ out += ""; } else { out += `<p>${line}</p>`; }
+        }
+      }
+      if(inList) out += "</ul>";
+      return out;
+    }
+
+    const gridEl = document.getElementById("grid");
+    const emptyEl = document.getElementById("empty");
+    const searchEl = document.getElementById("q");
+    let DATA = [];
+
+    // JSON'u aynı dizindeki topics.json'dan çek
+    fetch("topics.json", {cache:"no-store"})
+      .then(r => {
+        if(!r.ok) throw new Error("topics.json bulunamadı");
+        return r.json();
+      })
+      .then(json => {
+        DATA = Array.isArray(json) ? json : (json.items || []);
+        render(DATA);
+      })
+      .catch(err => {
+        console.error(err);
+        // Hata durumunda kullanıcıya mesaj
+        gridEl.innerHTML = `<div class="empty">Hata: ${err.message}. Lütfen <code>topics.json</code> dosyasını kök dizine ekleyin.</div>`;
+      });
+
+    function render(items){
+      if(!items.length){
+        gridEl.innerHTML = "";
+        emptyEl.hidden = false;
+        return;
+      }
+      emptyEl.hidden = true;
+      gridEl.innerHTML = items.map(item => cardHTML(item)).join("");
+      // Lazy loading görseller
+      for(const img of gridEl.querySelectorAll("img[data-src]")){
+        img.src = img.dataset.src;
+        img.removeAttribute("data-src");
+      }
+    }
+
+    function cardHTML({id, title, image_url, description}){
+      const safeTitle = (title || "").toString();
+      const descHTML = mdToHTML(description || "");
+      const alt = `Konu kartı – ${safeTitle}`;
+      return `
+        <article class="card" data-id="${id}">
+          <img class="thumb" loading="lazy" alt="${alt}" data-src="${image_url || ""}">
+          <div class="body">
+            <span class="badge">#${id}</span>
+            <div class="title">${safeTitle}</div>
+            <div class="desc">${descHTML}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Arama (başlık + açıklama)
+    function filter(q){
+      q = q.trim().toLowerCase();
+      if(!q) return DATA;
+      return DATA.filter(x =>
+        (x.title||"").toLowerCase().includes(q) ||
+        (x.description||"").toLowerCase().includes(q)
+      );
+    }
+
+    searchEl.addEventListener("input", () => render(filter(searchEl.value)));
+  </script>
+</body>
+</html>
