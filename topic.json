@@ -13,7 +13,7 @@
   },
   {
     "id": 32,
-    "title": "3. Radyal Lastik",
+    "title": "3. Radial Lastik",
     "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/radikal_lastik.png",
     "description": "'R' harfi, LASTİĞİN YAPISINI ve lastiğin 'Radial' olduğunu belirtir. Bu, modern binek otomobil lastiklerinde kullanılan standart yapıdır ve lastiğin daha dayanıklı, esnek ve performanslı olmasını sağlar."
   },
@@ -38,19 +38,19 @@
   {
     "id": 36,
     "title": "Düşük Basınçlı Lastiğin Etkileri",
-    "image_url": null,
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/dusuk_basinc_lastik_resmi.png",
     "description": "Lastiklere tavsiye edilenden daha düşük hava basılması, sürüş güvenliğini ve lastik ömrünü olumsuz etkiler. Başlıca olumsuz etkileri şunlardır:\n\n* **Azalan Yol Tutuşu:** Lastiğin yanakları aşırı esnediği için yere tam temas edemez ve yol tutuşu zayıflar.\n* **Direksiyon Hakimiyetinde Tutarsızlık:** Araç direksiyon tepkilerinde gecikmeler ve kararsızlıklar yaşanır.\n* **Artan Fren Mesafesi:** Özellikle ıslak zeminlerde fren mesafesi belirgin şekilde uzar.\n* **Aşırı Isınma ve Patlama Riski:** Sürtünmenin artmasıyla lastik aşırı ısınır ve bu durum patlama riskini artırır.\n* **Düzensiz Aşınma:** Lastiklerin omuz (kenar) kısımları daha hızlı aşınır, bu da lastik ömrünü kısaltır.\n* **Artan Yakıt Tüketimi:** Yuvarlanma direnci yükselir ve araç daha fazla yakıt tüketir."
   },
   {
     "id": 37,
     "title": "Yüksek Basınçlı Lastiğin Etkileri",
-    "image_url": null,
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/yuksek_basinc_lastik_resmi.png",
     "description": "Lastiklere tavsiye edilenden daha fazla hava basmak da en az düşük basınç kadar tehlikelidir ve çeşitli sorunlara yol açar. Başlıca olumsuz etkileri şunlardır:\n\n* **Azalan Yol Tutuşu:** Lastiğin sadece orta kısmı yere temas ettiği için yol ile temas yüzeyi azalır ve yol tutuşu düşer.\n* **Konforsuz Sürüş:** Lastik sertleştiği için yoldaki darbeleri daha fazla hissettirir ve araçta zıplamalar görülür.\n* **Direksiyon Hakimiyetinde Tutarsızlık:** Azalan yol tutuşu, direksiyon hakimiyetini de olumsuz etkiler.\n* **Düzensiz Aşınma:** Lastiğin sadece orta kısmı yere temas ettiğinden, bu bölge hızla aşınır ve lastiğin ömrü kısalır.\n* **Hasar Riskinde Artış:** Sertleşen lastik, yoldaki çukur veya engellerden daha kolay hasar alabilir."
   },
   {
     "id": 38,
     "title": "Lastik Diş Derinliğinin Önemi",
-    "image_url": null,
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/lastik_dis_derinligi_166mm.png",
     "description": "Lastik diş derinliği, özellikle ıslak zeminlerde suyu etkili bir şekilde tahliye ederek yol tutuşunu sağlamak için hayati öneme sahiptir.\n\n* **Yasal Sınır:** Binek otomobiller için yasal diş derinliği sınırı 1.6 mm'dir. Diş derinliği bu seviyenin altına düşen lastiklerin kullanılması tehlikeli ve yasaktır.\n* **Düşük Diş Derinliğinin Riskleri:** Diş derinliği azaldıkça lastiğin suyu tahliye etme kapasitesi düşer. Bu durum 'suda kızaklama' (aquaplaning) riskini artırır, ıslak zeminde fren mesafesini uzatır ve virajlarda savrulma riskini yükseltir.\n* **Kontrol:** Lastiklerin diş derinliği düzenli olarak kontrol edilmeli ve yasal sınıra yaklaştığında yenileriyle değiştirilmelidir."
   }
 ]
