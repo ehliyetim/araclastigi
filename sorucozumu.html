@@ -29,7 +29,6 @@
     overflow:hidden;
   }
   
-  /* üst şerit */
   .meta{
     display:flex; gap:10px; align-items:center; justify-content:space-between;
     padding:14px 16px; border-bottom:1px solid #1f2940; color:#b7c2cf; font-weight:700;
@@ -41,7 +40,6 @@
     background:var(--accent); color:#0a0f18; font-weight:800; font-size:.75rem
   }
   
-  /* soru görseli */
   .media{
     display:grid; place-items:center; 
     background:#0c1119; 
@@ -117,7 +115,6 @@
   .btn.primary{background:var(--accent); color:#0a0f18; border-color:transparent}
   .btn[disabled]{opacity:.5; cursor:not-allowed; transform:none}
   
-  /* Sonuç ekranı */
   .result{
     padding:40px 24px; 
     text-align:center;
@@ -198,7 +195,12 @@
     </div>
 
     <div id="quizContent">
-      <!-- Sorular buraya yüklenecek -->
+      <div class="body">
+        <div class="question" style="text-align:center; color:var(--muted)">
+          <div style="font-size:2rem; margin-bottom:12px">⏳</div>
+          Quiz soruları yükleniyor...
+        </div>
+      </div>
     </div>
 
     <div class="nav">
@@ -208,39 +210,7 @@
 </div>
 
 <script>
-  // Quiz verilerini JSON'dan yükle
   let quizData = [];
-  
-  // JSON dosyasını yükle
-  fetch('quiz.json')
-    .then(response => {
-      if (!response.ok) throw new Error('quiz.json yüklenemedi');
-      return response.json();
-    })
-    .then(data => {
-      // JSON formatını uyarla
-      quizData = data.map(q => ({
-        id: q.id,
-        image: q.image_url,
-        question: q.question,
-        options: q.options.map(opt => opt.text),
-        correct: q.options.findIndex(opt => opt.isTrue),
-        explanation: q.description
-      }));
-      init();
-    })
-    .catch(error => {
-      console.error('Quiz yükleme hatası:', error);
-      document.getElementById('quizContent').innerHTML = `
-        <div class="body">
-          <div class="question" style="text-align:center; color:var(--bad)">
-            ❌ Quiz soruları yüklenemedi!<br>
-            <span style="font-size:0.9rem; color:var(--muted)">quiz.json dosyasının varlığını kontrol edin.</span>
-          </div>
-        </div>
-      `;
-    });
-
   let currentQuestion = 0;
   let correctAnswers = 0;
   let answered = false;
@@ -251,12 +221,52 @@
   const totalSpan = document.getElementById('total');
   const correctCountSpan = document.getElementById('correctCount');
 
-  // Başlangıç
+  // JSON dosyasını yükle
+  fetch('quiz.json', { cache: 'no-store' })
+    .then(response => {
+      console.log('Fetch durumu:', response.status);
+      if (!response.ok) throw new Error(`HTTP ${response.status}: quiz.json yüklenemedi`);
+      return response.json();
+    })
+    .then(data => {
+      console.log('Veri yüklendi:', data.length, 'soru');
+      
+      if (!Array.isArray(data) || data.length === 0) {
+        throw new Error('JSON dosyası boş veya geçersiz');
+      }
+      
+      // JSON formatını uyarla
+      quizData = data.map(q => ({
+        id: q.id,
+        image: q.image_url,
+        question: q.question,
+        options: q.options.map(opt => opt.text),
+        correct: q.options.findIndex(opt => opt.isTrue),
+        explanation: q.description
+      }));
+      
+      init();
+    })
+    .catch(error => {
+      console.error('Hata:', error);
+      quizContent.innerHTML = `
+        <div class="body">
+          <div class="question" style="text-align:center; color:var(--bad)">
+            ❌ Quiz soruları yüklenemedi!<br>
+            <span style="font-size:0.9rem; color:var(--muted); margin-top:8px; display:block">
+              ${error.message}
+            </span>
+          </div>
+        </div>
+      `;
+    });
+
   function init() {
-    if (isLoading || quizData.length === 0) {
+    if (!quizData || quizData.length === 0) {
       console.error('Quiz başlatılamadı: Veri yok');
       return;
     }
+    
     totalSpan.textContent = quizData.length;
     currentQuestion = 0;
     correctAnswers = 0;
@@ -264,7 +274,6 @@
     loadQuestion();
   }
 
-  // Soru yükleme
   function loadQuestion() {
     if (currentQuestion >= quizData.length) {
       showResults();
@@ -280,7 +289,7 @@
     quizContent.innerHTML = `
       ${q.image ? `
         <div class="media">
-          <img src="${q.image}" alt="Soru görseli">
+          <img src="${q.image}" alt="Soru görseli" loading="lazy">
         </div>
       ` : ''}
       <div class="body">
@@ -294,11 +303,9 @@
       </div>
     `;
 
-    // Seçenek tıklama
     document.getElementById('options').addEventListener('click', handleAnswer);
   }
 
-  // Cevap kontrolü
   function handleAnswer(e) {
     if (!e.target.classList.contains('opt') || answered) return;
 
@@ -307,22 +314,16 @@
     const q = quizData[currentQuestion];
     const allOpts = document.querySelectorAll('.opt');
 
-    // Tüm seçenekleri devre dışı bırak
     allOpts.forEach(opt => opt.disabled = true);
-
-    // Doğru cevabı işaretle
     allOpts[q.correct].classList.add('correct');
 
     if (selectedIndex === q.correct) {
-      // DOĞRU CEVAP
       correctAnswers++;
       correctCountSpan.textContent = correctAnswers;
       nextBtn.disabled = false;
     } else {
-      // YANLIŞ CEVAP
       allOpts[selectedIndex].classList.add('wrong');
       
-      // Açıklamayı göster
       const explanation = document.getElementById('explanation');
       explanation.innerHTML = `<strong>❌ Yanlış!</strong><br>${q.explanation}`;
       explanation.classList.add('show');
@@ -331,13 +332,11 @@
     }
   }
 
-  // Sonraki soru
   nextBtn.addEventListener('click', () => {
     currentQuestion++;
     loadQuestion();
   });
 
-  // Sonuçları göster
   function showResults() {
     const percentage = Math.round((correctAnswers / quizData.length) * 100);
     const wrong = quizData.length - correctAnswers;
@@ -364,9 +363,6 @@
       </div>
     `;
   }
-
-  // Başlat (sayfa yüklendiğinde değil, JSON yüklendikten sonra)
-  // init() artık fetch içinde çağrılıyor
 </script>
 
 </body>
