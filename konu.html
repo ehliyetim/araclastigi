@@ -84,39 +84,32 @@
     background:var(--card-hover);
   }
 
-  /* Görsel alanı - overlay ile yazıları korumalı */
+  /* Görsel alanı - tüm görseli sığdır (kırpma yok) */
   .media{
     position:relative;
     width:100%;
     height:clamp(200px, 35vw, 280px);
     background:linear-gradient(135deg, #1a2332 0%, #0f1621 100%);
     overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
   
   .thumb{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
     object-position:center;
     image-rendering:auto;
-    transition:transform 0.4s ease;
+    transition:transform 0.3s ease;
   }
   
   .card:hover .thumb{
-    transform:scale(1.05);
+    transform:scale(1.03);
   }
   
-  /* Gradient overlay - görselin üstüne yazı geldiğinde okunabilirlik için */
-  .media::after{
-    content:'';
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    height:50%;
-    background:linear-gradient(to top, rgba(10,14,23,0.9) 0%, transparent 100%);
-    pointer-events:none;
-  }
+  /* Gradient overlay kaldırıldı - artık gerekli değil */
   
   /* Kart içeriği - artık overlay'in üstünde değil, altında */
   .body{
@@ -264,7 +257,6 @@
 <body>
 <header>
   <h1>Lastik Bilgileri</h1>
-  <p>Modern kart tasarımı • Responsive & arama özellikli</p>
 </header>
 
 <main class="container">
