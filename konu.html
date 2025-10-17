@@ -3,127 +3,364 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lastik Bilgileri – Konu Kartları</title>
+<title>Lastik Bilgileri – Modern Kart Tasarımı</title>
 <style>
   :root{
-    --bg:#0e1117; --fg:#e6e9ef; --muted:#9aa3ad; --card:#171b22; --card2:#141923;
-    --accent:#4cc3ff; --ring:#2a3344; --radius:18px;
+    --bg:#0a0e17; 
+    --fg:#e8ecf4; 
+    --muted:#8b95a8; 
+    --card:#151921;
+    --card-hover:#1a1f2b;
+    --accent:#00d4ff; 
+    --accent-soft:#1a8cff;
+    --border:#232936;
+    --shadow: rgba(0,0,0,0.4);
+    --radius:16px;
   }
-  *{box-sizing:border-box}
+  
+  *{box-sizing:border-box; margin:0; padding:0;}
+  
   body{
-    margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    margin:0; 
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
     color:var(--fg);
-    background:linear-gradient(#0c1016,#0e1117 40%,#0b0e14);
+    background:linear-gradient(135deg, #0a0e17 0%, #12161f 50%, #0d1118 100%);
+    min-height:100vh;
+    line-height:1.6;
   }
-  header{padding:28px 16px 10px;text-align:center}
-  header h1{margin:0 0 6px;font-weight:800}
-  header p{margin:0;color:var(--muted)}
-  .container{width:min(1100px,92vw); margin:12px auto 56px;}
-  .toolbar{display:flex;gap:10px;margin:10px 0 18px}
-  .search{flex:1;padding:12px 14px;border-radius:12px;border:1px solid var(--ring);background:#0f1521;color:var(--fg)}
-  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+  
+  header{
+    padding:clamp(24px, 5vw, 48px) 20px clamp(16px, 3vw, 32px);
+    text-align:center;
+    background:linear-gradient(180deg, rgba(0,212,255,0.08) 0%, transparent 100%);
+  }
+  
+  header h1{
+    margin:0 0 8px;
+    font-weight:800;
+    font-size:clamp(1.8rem, 4vw, 2.8rem);
+    background:linear-gradient(135deg, #00d4ff 0%, #1a8cff 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  
+  header p{
+    margin:0;
+    color:var(--muted);
+    font-size:clamp(0.9rem, 2vw, 1.05rem);
+  }
+  
+  .container{
+    max-width:1200px; 
+    margin:0 auto;
+    padding:0 clamp(12px, 3vw, 24px) 60px;
+  }
+  
+
+  
+  .grid{
+    display:grid;
+    gap:clamp(20px, 3vw, 32px);
+    grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  }
+  
   .card{
-    background:linear-gradient(180deg,var(--card),var(--card2));
-    border:1px solid #20283a;border-radius:var(--radius);overflow:hidden;
-    display:flex;flex-direction:column;min-height:100%;
-    box-shadow:0 12px 28px rgba(0,0,0,.35);
-    transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 4px 16px var(--shadow);
+    transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position:relative;
   }
-  .card:hover{transform:translateY(-2px);border-color:#2e3a55;box-shadow:0 16px 34px rgba(0,0,0,.45)}
+  
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:var(--accent-soft);
+    box-shadow:0 12px 32px rgba(0,212,255,0.15), 0 4px 16px var(--shadow);
+    background:var(--card-hover);
+  }
 
-  /* === GÖRSEL ALANI ===
-     Yüksekliği ekrana göre ayarlıyoruz; contain ile TAM SIĞAR (crop yok).
-     "cover" istersen alttaki contain satırını yorumla, cover satırını aç. */
+  /* Görsel alanı - overlay ile yazıları korumalı */
   .media{
-    height:clamp(190px, 30vw, 340px);  /* mobilde ~190px, geniş ekranda ~340px */
-    background:
-      radial-gradient(1200px 400px at -10% -40%, #1a2334 0%, transparent 60%),
-      radial-gradient(1200px 400px at 110% -40%, #152034 0%, transparent 60%),
-      #0c1119;
-    display:grid;place-items:center;border-bottom:1px solid #1f2940;
+    position:relative;
+    width:100%;
+    height:clamp(200px, 35vw, 280px);
+    background:linear-gradient(135deg, #1a2332 0%, #0f1621 100%);
+    overflow:hidden;
   }
+  
   .thumb{
-    width:100%; height:100%;
-    object-fit: contain;   /* tamamı görünür, boşluk kalabilir */
-    /* object-fit: cover;  /* KARTI TAM DOLDURSUN (kırpar) -> bunu seçmek istersen aç */
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
     image-rendering:auto;
+    transition:transform 0.4s ease;
   }
-
-  .body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:10px}
-  .kicker{display:inline-flex;gap:8px;font-size:.73rem;font-weight:800;background:var(--accent);color:#0b101a;padding:4px 10px;border-radius:999px;width:max-content}
-  .title{font-size:1.08rem;font-weight:800;line-height:1.3}
-  .desc{font-size:.96rem;opacity:.96}
-  .desc p{margin:.55em 0}
-  .desc ul{margin:.45em 0 .2em 1.1em}
-  .empty{color:#92a0b3;text-align:center;padding:36px}
-  footer{color:#6e7887;text-align:center;padding:28px 0 36px;font-size:.85rem}
+  
+  .card:hover .thumb{
+    transform:scale(1.05);
+  }
+  
+  /* Gradient overlay - görselin üstüne yazı geldiğinde okunabilirlik için */
+  .media::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:50%;
+    background:linear-gradient(to top, rgba(10,14,23,0.9) 0%, transparent 100%);
+    pointer-events:none;
+  }
+  
+  /* Kart içeriği - artık overlay'in üstünde değil, altında */
+  .body{
+    padding:clamp(16px, 3vw, 24px);
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    flex:1;
+  }
+  
+  .kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.75rem;
+    font-weight:700;
+    letter-spacing:0.5px;
+    background:linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+    color:#0a0e17;
+    padding:6px 14px;
+    border-radius:999px;
+    width:max-content;
+    text-transform:uppercase;
+  }
+  
+  .title{
+    font-size:clamp(1.1rem, 2.5vw, 1.3rem);
+    font-weight:700;
+    line-height:1.3;
+    color:var(--fg);
+  }
+  
+  .desc{
+    font-size:clamp(0.9rem, 2vw, 0.98rem);
+    color:var(--muted);
+    line-height:1.7;
+  }
+  
+  .desc p{
+    margin:0.6em 0;
+  }
+  
+  .desc p:first-child{
+    margin-top:0;
+  }
+  
+  .desc ul{
+    margin:0.5em 0;
+    padding-left:1.3em;
+  }
+  
+  .desc li{
+    margin:0.4em 0;
+    padding-left:0.3em;
+  }
+  
+  .desc strong{
+    color:var(--fg);
+    font-weight:600;
+  }
+  
+  .empty{
+    grid-column:1/-1;
+    color:var(--muted);
+    text-align:center;
+    padding:60px 20px;
+    font-size:1.1rem;
+  }
+  
+  .cta-section{
+    max-width:600px;
+    margin:60px auto 40px;
+    padding:0 20px;
+    text-align:center;
+  }
+  
+  .cta-button{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:18px 36px;
+    font-size:1.1rem;
+    font-weight:700;
+    color:#0a0e17;
+    background:linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+    border:none;
+    border-radius:12px;
+    text-decoration:none;
+    box-shadow:0 8px 24px rgba(0,212,255,0.3);
+    transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor:pointer;
+  }
+  
+  .cta-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 32px rgba(0,212,255,0.4);
+    background:linear-gradient(135deg, #00e4ff 0%, #2a9cff 100%);
+  }
+  
+  .cta-button:active{
+    transform:translateY(0);
+  }
+  
+  footer{
+    color:#5a6576;
+    text-align:center;
+    padding:40px 20px;
+    font-size:0.9rem;
+  }
+  
+  footer code{
+    background:rgba(0,212,255,0.1);
+    padding:2px 8px;
+    border-radius:4px;
+    color:var(--accent);
+  }
+  
+  /* Responsive iyileştirmeleri */
+  @media (max-width: 768px) {
+    .media{
+      height:220px;
+    }
+    
+    .grid{
+      grid-template-columns:1fr;
+      gap:20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header h1{
+      font-size:1.6rem;
+    }
+    
+    .media{
+      height:200px;
+    }
+    
+    .body{
+      padding:16px;
+    }
+  }
 </style>
 </head>
 <body>
 <header>
   <h1>Lastik Bilgileri</h1>
-  <p>Konu kartları • JSON’dan otomatik yüklenir</p>
+  <p>Modern kart tasarımı • Responsive & arama özellikli</p>
 </header>
 
 <main class="container">
-  <div class="toolbar">
-    <input id="q" class="search" type="search" placeholder="Ara: başlık & içerik (örn. kesit, diş, hız endeksi)">
-  </div>
   <section id="grid" class="grid" aria-live="polite"></section>
-  <div id="empty" class="empty" hidden>Sonuç bulunamadı.</div>
+  <div id="empty" class="empty" hidden>🔍 Aradığınız kriterlere uygun sonuç bulunamadı.</div>
 </main>
 
-<footer>Kaynak: <code>topic.json</code> • GitHub Pages</footer>
+<section class="cta-section">
+  <a href="https://ehliyetim.github.io//araclastigi/sorucozumu.html" class="cta-button">
+    <span>📝</span>
+    <span>Soru Çözmek İçin Tıklayın</span>
+  </a>
+</section>
+
+<footer>
+  Kaynak: <code>topic.json</code> • Modern & Responsive Tasarım
+</footer>
 
 <script>
-  // mini markdown -> html
   function mdToHTML(md){
     if(!md) return "";
     let html = md.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
-    const lines = html.split(/\r?\n/); let out="", inList=false;
+    const lines = html.split(/\r?\n/);
+    let out="", inList=false;
+    
     for(const ln of lines){
       const m = ln.match(/^\s*\*\s+(.*)$/);
-      if(m){ if(!inList){out+="<ul>"; inList=true} out+=`<li>${m[1]}</li>`; }
-      else{ if(inList){out+="</ul>"; inList=false} if(ln.trim()) out+=`<p>${ln}</p>`; }
+      if(m){
+        if(!inList){out+="<ul>"; inList=true;}
+        out+=`<li>${m[1]}</li>`;
+      } else {
+        if(inList){out+="</ul>"; inList=false;}
+        if(ln.trim()) out+=`<p>${ln}</p>`;
+      }
     }
     if(inList) out+="</ul>";
     return out;
   }
-  const grid=document.getElementById("grid"), empty=document.getElementById("empty"), q=document.getElementById("q");
-  let DATA=[];
-  fetch("topic.json",{cache:"no-store"})
-    .then(r=>{if(!r.ok) throw new Error("topic.json bulunamadı"); return r.json();})
-    .then(json=>{ DATA=Array.isArray(json)?json:(json.items||[]); render(DATA);})
-    .catch(err=>{ grid.innerHTML=`<div class="empty">Hata: ${err.message}</div>`; });
+  
+  const grid = document.getElementById("grid");
+  const empty = document.getElementById("empty");
+  let DATA = [];
+  
+  fetch("topic.json", {cache:"no-store"})
+    .then(r => {
+      if(!r.ok) throw new Error("topic.json bulunamadı");
+      return r.json();
+    })
+    .then(json => {
+      DATA = Array.isArray(json) ? json : (json.items || []);
+      render(DATA);
+    })
+    .catch(err => {
+      grid.innerHTML = `<div class="empty">❌ Hata: ${err.message}</div>`;
+    });
 
   function render(items){
-    if(!items.length){ grid.innerHTML=""; empty.hidden=false; return; }
-    empty.hidden=true;
+    if(!items.length){
+      grid.innerHTML = "";
+      empty.hidden = false;
+      return;
+    }
+    empty.hidden = true;
     grid.innerHTML = items.map(cardHTML).join("");
-    // lazy-load
-    for(const img of grid.querySelectorAll("img[data-src]")){ img.src=img.dataset.src; img.removeAttribute("data-src"); }
+    
+    // Lazy loading
+    for(const img of grid.querySelectorAll("img[data-src]")){
+      img.src = img.dataset.src;
+      img.removeAttribute("data-src");
+    }
   }
 
-  function cardHTML({id,title,image_url,description}){
-    const t = escapeHTML(title||"");
+  function cardHTML({id, title, image_url, description}){
+    const t = escapeHTML(title || "");
     return `
-      <article class="card" data-id="${id??""}">
+      <article class="card" data-id="${id ?? ""}">
         <div class="media">
-          <img class="thumb" loading="lazy" alt="${t}" data-src="${image_url}">
+          <img class="thumb" loading="lazy" alt="${t}" data-src="${image_url || ''}">
         </div>
         <div class="body">
-          <span class="kicker">#${id??"—"}</span>
+          <span class="kicker">#${id ?? "—"}</span>
           <div class="title">${t}</div>
-          <div class="desc">${mdToHTML(description||"")}</div>
+          <div class="desc">${mdToHTML(description || "")}</div>
         </div>
       </article>`;
   }
-  function escapeHTML(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-  function filter(term){
-    term=term.trim().toLowerCase(); if(!term) return DATA;
-    return DATA.filter(x=>(x.title||"").toLowerCase().includes(term)||(x.description||"").toLowerCase().includes(term));
+  
+  function escapeHTML(s){
+    return s.replace(/[&<>"']/g, m => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":"&#39;"
+    }[m]));
   }
-  q.addEventListener("input",()=>render(filter(q.value)));
 </script>
 </body>
 </html>
