@@ -10,19 +10,25 @@
     --accent:#4cc3ff; --ok:#1fbf75; --bad:#ff5a6b; --ring:#273146; --radius:18px;
   }
   *{box-sizing:border-box}
-  body{margin:0; color:var(--fg); background:linear-gradient(#0b1016,#0f1117 45%,#0b0f16);
-       font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  body{
+    margin:0; color:var(--fg); 
+    background:linear-gradient(#0b1016,#0f1117 45%,#0b0f16);
+    font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    min-height:100vh;
+  }
   .wrap{width:min(980px,92vw); margin:24px auto 56px;}
   header{padding:10px 4px 18px; text-align:center}
   header h1{margin:0 0 6px; font-weight:800; letter-spacing:.2px}
   header p{margin:0; color:var(--muted); font-size:.95rem}
-
+  
   .card{
     background:linear-gradient(180deg,var(--card),var(--card2));
-    border:1px solid #20283a; border-radius:var(--radius);
-    box-shadow:0 14px 34px rgba(0,0,0,.38); overflow:hidden;
+    border:1px solid #20283a; 
+    border-radius:var(--radius);
+    box-shadow:0 14px 34px rgba(0,0,0,.38); 
+    overflow:hidden;
   }
-
+  
   /* üst şerit */
   .meta{
     display:flex; gap:10px; align-items:center; justify-content:space-between;
@@ -30,54 +36,341 @@
     background:radial-gradient(900px 200px at -10% -30%, #1a2440, transparent 60%);
   }
   .progress{display:flex; gap:8px; align-items:center; font-variant-numeric:tabular-nums;}
-  .badge{display:inline-flex; align-items:center; gap:8px; padding:5px 10px; border-radius:999px;
-         background:var(--accent); color:#0a0f18; font-weight:800; font-size:.75rem}
-
-  /* soru görseli – her oranı TAM göster (contain) */
-  .media{display:grid; place-items:center; background:#0c1119; border-bottom:1px solid #1f2940}
-  .media img{width:100%; height:clamp(200px,36vw,360px); object-fit:contain}
-
+  .badge{
+    display:inline-flex; align-items:center; gap:8px; padding:5px 10px; border-radius:999px;
+    background:var(--accent); color:#0a0f18; font-weight:800; font-size:.75rem
+  }
+  
+  /* soru görseli */
+  .media{
+    display:grid; place-items:center; 
+    background:#0c1119; 
+    border-bottom:1px solid #1f2940;
+    min-height:200px;
+  }
+  .media img{
+    width:100%; 
+    height:clamp(200px,36vw,360px); 
+    object-fit:contain;
+  }
+  
   .body{padding:16px}
   .question{font-size:1.15rem; font-weight:800; line-height:1.35; margin:6px 0 12px}
+  
   .opts{display:grid; gap:10px}
   .opt{
-    padding:12px 14px; border:1px solid var(--ring); background:#0f1521; color:var(--fg);
-    border-radius:12px; cursor:pointer; text-align:left; font-size:1rem;
+    padding:12px 14px; 
+    border:1px solid var(--ring); 
+    background:#0f1521; 
+    color:var(--fg);
+    border-radius:12px; 
+    cursor:pointer; 
+    text-align:left; 
+    font-size:1rem;
     transition:transform .1s ease, border-color .15s ease, background .15s ease;
   }
-  .opt:hover{transform:translateY(-1px); border-color:#2e3a55}
+  .opt:hover:not([disabled]){transform:translateY(-1px); border-color:#2e3a55}
   .opt[disabled]{opacity:.65; cursor:not-allowed}
-
-  .opt.correct{border-color:rgba(31,191,117,.6); background:rgba(31,191,117,.12)}
-  .opt.wrong{border-color:rgba(255,90,107,.6); background:rgba(255,90,107,.1)}
-
-  .explain{
-    margin-top:12px; padding:12px 14px; border:1px dashed #3a2330;
-    background:rgba(255,90,107,.08); border-radius:12px; color:#ffdbe0; display:none;
+  .opt.correct{
+    border-color:rgba(31,191,117,.7); 
+    background:rgba(31,191,117,.15);
+    font-weight:700;
   }
-
+  .opt.wrong{
+    border-color:rgba(255,90,107,.7); 
+    background:rgba(255,90,107,.12);
+  }
+  
+  .explain{
+    margin-top:14px; 
+    padding:14px 16px; 
+    border:1px solid rgba(255,90,107,.3);
+    background:rgba(255,90,107,.1); 
+    border-radius:12px; 
+    color:#ffcdd5; 
+    line-height:1.6;
+    display:none;
+  }
+  .explain.show{display:block}
+  .explain strong{color:#ffdbe0}
+  
   .nav{
-    display:flex; justify-content:flex-end; gap:10px; padding:14px 16px 16px;
-    border-top:1px solid #20283a; background:linear-gradient(180deg,#141a26,#121722);
+    display:flex; 
+    justify-content:flex-end; 
+    gap:10px; 
+    padding:14px 16px 16px;
+    border-top:1px solid #20283a; 
+    background:linear-gradient(180deg,#141a26,#121722);
   }
   .btn{
-    padding:10px 14px; border-radius:12px; border:1px solid #2b3244; background:#111829;
-    color:var(--fg); font-weight:700; cursor:pointer;
+    padding:10px 18px; 
+    border-radius:12px; 
+    border:1px solid #2b3244; 
+    background:#111829;
+    color:var(--fg); 
+    font-weight:700; 
+    cursor:pointer;
     transition:transform .1s ease,border-color .15s ease, background .15s ease;
+    font-size:.95rem;
   }
-  .btn:hover{transform:translateY(-1px); border-color:#34415a}
+  .btn:hover:not([disabled]){transform:translateY(-1px); border-color:#34415a}
   .btn.primary{background:var(--accent); color:#0a0f18; border-color:transparent}
-  .btn[disabled]{opacity:.5; cursor:not-allowed}
-
-  .done{padding:26px; text-align:center}
-  .done h2{margin:0 0 8px}
-  .mini{color:#9aa3ad; font-size:.95rem}
-
+  .btn[disabled]{opacity:.5; cursor:not-allowed; transform:none}
+  
+  /* Sonuç ekranı */
+  .result{
+    padding:40px 24px; 
+    text-align:center;
+  }
+  .result h2{
+    margin:0 0 12px; 
+    font-size:2rem; 
+    font-weight:800;
+  }
+  .result .score{
+    font-size:3.5rem; 
+    font-weight:900; 
+    background:linear-gradient(135deg, var(--accent), var(--ok));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin:16px 0;
+  }
+  .result .stats{
+    display:flex; 
+    gap:24px; 
+    justify-content:center; 
+    margin:24px 0 32px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    padding:16px 24px;
+    background:rgba(76,195,255,.1);
+    border:1px solid rgba(76,195,255,.3);
+    border-radius:12px;
+    min-width:140px;
+  }
+  .stat-label{
+    font-size:.85rem; 
+    color:var(--muted); 
+    text-transform:uppercase; 
+    font-weight:700;
+    letter-spacing:.5px;
+  }
+  .stat-value{
+    font-size:2rem; 
+    font-weight:800; 
+    margin-top:4px;
+  }
+  .stat.correct .stat-value{color:var(--ok)}
+  .stat.wrong .stat-value{color:var(--bad)}
+  
   @media (max-width:560px){
     .media img{height:220px}
     .question{font-size:1.05rem}
+    .result .score{font-size:2.8rem}
+    .stat{min-width:120px; padding:12px 16px}
+    .stat-value{font-size:1.6rem}
   }
 </style>
 </head>
 <body>
- 
+
+<div class="wrap">
+  <header>
+    <h1>🚗 Lastik Bilgisi Quiz</h1>
+    <p>Bilgini test et, öğren!</p>
+  </header>
+
+  <div class="card" id="quizCard">
+    <div class="meta">
+      <div class="progress">
+        <span>Soru</span>
+        <span id="current">1</span>
+        <span>/</span>
+        <span id="total">0</span>
+      </div>
+      <div class="badge">
+        <span>✓</span>
+        <span id="correctCount">0</span>
+        <span>Doğru</span>
+      </div>
+    </div>
+
+    <div id="quizContent">
+      <!-- Sorular buraya yüklenecek -->
+    </div>
+
+    <div class="nav">
+      <button class="btn primary" id="nextBtn" disabled>Sonraki Soru →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Quiz verileri
+  const quizData = [
+    {
+      id: 1,
+      image: "https://via.placeholder.com/600x300/1a2440/ffffff?text=Lastik+Kesit+Genişliği",
+      question: "Lastik boyutunda ilk rakam neyi ifade eder?",
+      options: [
+        "Kesit genişliği (mm)",
+        "Jant çapı",
+        "Yükseklik oranı",
+        "Hız endeksi"
+      ],
+      correct: 0,
+      explanation: "Lastik boyutunda ilk rakam kesit genişliğini milimetre cinsinden gösterir. Örneğin: 205/55R16'da 205, kesit genişliğidir."
+    },
+    {
+      id: 2,
+      image: "https://via.placeholder.com/600x300/1a2440/ffffff?text=Lastik+Diş+Derinliği",
+      question: "Yasal lastik diş derinliği minimum kaç mm olmalıdır?",
+      options: [
+        "1.0 mm",
+        "1.6 mm",
+        "2.0 mm",
+        "3.0 mm"
+      ],
+      correct: 1,
+      explanation: "Türkiye'de yasal minimum lastik diş derinliği 1.6 mm'dir. Ancak güvenlik için 3 mm ve üzeri önerilir."
+    },
+    {
+      id: 3,
+      image: "https://via.placeholder.com/600x300/1a2440/ffffff?text=Hız+Endeksi",
+      question: "'V' hız endeksi kaç km/s maksimum hızı gösterir?",
+      options: [
+        "210 km/s",
+        "240 km/s",
+        "270 km/s",
+        "300 km/s"
+      ],
+      correct: 1,
+      explanation: "V hız endeksi 240 km/s maksimum hız kapasitesini gösterir. Bu, lastik üzerinde yan duvarda belirtilir."
+    }
+  ];
+
+  let currentQuestion = 0;
+  let correctAnswers = 0;
+  let answered = false;
+
+  const quizContent = document.getElementById('quizContent');
+  const nextBtn = document.getElementById('nextBtn');
+  const currentSpan = document.getElementById('current');
+  const totalSpan = document.getElementById('total');
+  const correctCountSpan = document.getElementById('correctCount');
+
+  // Başlangıç
+  function init() {
+    totalSpan.textContent = quizData.length;
+    loadQuestion();
+  }
+
+  // Soru yükleme
+  function loadQuestion() {
+    if (currentQuestion >= quizData.length) {
+      showResults();
+      return;
+    }
+
+    answered = false;
+    nextBtn.disabled = true;
+
+    const q = quizData[currentQuestion];
+    currentSpan.textContent = currentQuestion + 1;
+
+    quizContent.innerHTML = `
+      ${q.image ? `
+        <div class="media">
+          <img src="${q.image}" alt="Soru görseli">
+        </div>
+      ` : ''}
+      <div class="body">
+        <div class="question">${q.question}</div>
+        <div class="opts" id="options">
+          ${q.options.map((opt, idx) => `
+            <button class="opt" data-index="${idx}">${opt}</button>
+          `).join('')}
+        </div>
+        <div class="explain" id="explanation"></div>
+      </div>
+    `;
+
+    // Seçenek tıklama
+    document.getElementById('options').addEventListener('click', handleAnswer);
+  }
+
+  // Cevap kontrolü
+  function handleAnswer(e) {
+    if (!e.target.classList.contains('opt') || answered) return;
+
+    answered = true;
+    const selectedIndex = parseInt(e.target.dataset.index);
+    const q = quizData[currentQuestion];
+    const allOpts = document.querySelectorAll('.opt');
+
+    // Tüm seçenekleri devre dışı bırak
+    allOpts.forEach(opt => opt.disabled = true);
+
+    // Doğru cevabı işaretle
+    allOpts[q.correct].classList.add('correct');
+
+    if (selectedIndex === q.correct) {
+      // DOĞRU CEVAP
+      correctAnswers++;
+      correctCountSpan.textContent = correctAnswers;
+      nextBtn.disabled = false;
+    } else {
+      // YANLIŞ CEVAP
+      allOpts[selectedIndex].classList.add('wrong');
+      
+      // Açıklamayı göster
+      const explanation = document.getElementById('explanation');
+      explanation.innerHTML = `<strong>❌ Yanlış!</strong><br>${q.explanation}`;
+      explanation.classList.add('show');
+      
+      nextBtn.disabled = false;
+    }
+  }
+
+  // Sonraki soru
+  nextBtn.addEventListener('click', () => {
+    currentQuestion++;
+    loadQuestion();
+  });
+
+  // Sonuçları göster
+  function showResults() {
+    const percentage = Math.round((correctAnswers / quizData.length) * 100);
+    const wrong = quizData.length - correctAnswers;
+
+    document.getElementById('quizCard').innerHTML = `
+      <div class="result">
+        <h2>🎉 Quiz Tamamlandı!</h2>
+        <div class="score">${percentage}%</div>
+        <div class="stats">
+          <div class="stat correct">
+            <div class="stat-label">Doğru</div>
+            <div class="stat-value">✓ ${correctAnswers}</div>
+          </div>
+          <div class="stat wrong">
+            <div class="stat-label">Yanlış</div>
+            <div class="stat-value">✗ ${wrong}</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Toplam</div>
+            <div class="stat-value">${quizData.length}</div>
+          </div>
+        </div>
+        <button class="btn primary" onclick="location.reload()">🔄 Tekrar Dene</button>
+      </div>
+    `;
+  }
+
+  // Başlat
+  init();
+</script>
+
+</body>
+</html>
