@@ -1,0 +1,56 @@
+[
+  {
+    "id": 30,
+    "title": "1. Lastik Kesit Genişliği",
+    "image_url": "https://i.ibb.co/L519p4M/kesit-genisligi.png",
+    "description": "Lastiğin yere temas eden taban kısmının milimetre (mm) cinsinden genişliğini ifade eder. Örnek görseldeki '195' rakamı, lastiğin 195 mm genişliğinde olduğunu gösterir."
+  },
+  {
+    "id": 31,
+    "title": "2. Lastik Kesit Oranı",
+    "image_url": "https://i.ibb.co/hZ23mFz/kesit-orani.png",
+    "description": "Lastik yanak yüksekliğinin, taban genişliğine oranını yüzde (%) olarak belirtir. Örnekteki '55' sayısı, yanak yüksekliğinin, 195 mm'lik taban genişliğinin %55'i olduğunu ifade eder."
+  },
+  {
+    "id": 32,
+    "title": "3. Radyal Lastik",
+    "image_url": "https://i.ibb.co/GcqY21n/radikal-lastik.png",
+    "description": "'R' harfi, LASTİĞİN YAPISINI ve lastiğin 'Radial' olduğunu belirtir. Bu, modern binek otomobil lastiklerinde kullanılan standart yapıdır ve lastiğin daha dayanıklı, esnek ve performanslı olmasını sağlar."
+  },
+  {
+    "id": 33,
+    "title": "3. Jant Çapı",
+    "image_url": "https://i.ibb.co/hYhR8Vv/jant-capi.png",
+    "description": "Bu sayı lastiğin takılacağı JANTIN ÇAPINI İNÇ cinsinden gösterir. Örnekteki '16' rakamı, lastiğin 16 inç büyüklüğündeki bir janta uygun olduğunu ifade eder."
+  },
+  {
+    "id": 34,
+    "title": "4. Yük Endeksi",
+    "image_url": "https://i.ibb.co/mBf5zXW/yuk-endeksi.png",
+    "description": "Bir lastiğin taşıyabileceği AZAMİ YÜKÜ belirler  . Örnekteki '91' değeri, bu lastiğin tek başına 615 kg yük taşıyabileceğini gösterir."
+  },
+  {
+    "id": 35,
+    "title": "5. Hız Endeksi",
+    "image_url": "https://i.ibb.co/8Y5qTnt/hiz-endeksi.png",
+    "description": "Lastiğin, belirtilen yük kapasitesi dahilinde güvenli bir şekilde ulaşabileceği MAKSİMUM  HIZI belirten bir harf kodudur. Örnekteki 'V' harfi, bu lastiğin 240 km/s hıza kadar güvenli olduğunu gösterir."
+  },
+  {
+    "id": 36,
+    "title": "Düşük Basınçlı Lastiğin Etkileri",
+    "image_url": "https://i.ibb.co/68v7y23/dusuk-basinc.png",
+    "description": "Lastiklere tavsiye edilenden daha düşük hava basılması, sürüş güvenliğini ve lastik ömrünü olumsuz etkiler. Başlıca olumsuz etkileri şunlardır:\n\n* **Azalan Yol Tutuşu:** Lastiğin yanakları aşırı esnediği için yere tam temas edemez ve yol tutuşu zayıflar.\n* **Direksiyon Hakimiyetinde Tutarsızlık:** Araç direksiyon tepkilerinde gecikmeler ve kararsızlıklar yaşanır.\n* **Artan Fren Mesafesi:** Özellikle ıslak zeminlerde fren mesafesi belirgin şekilde uzar.\n* **Aşırı Isınma ve Patlama Riski:** Sürtünmenin artmasıyla lastik aşırı ısınır ve bu durum patlama riskini artırır.\n* **Düzensiz Aşınma:** Lastiklerin omuz (kenar) kısımları daha hızlı aşınır, bu da lastik ömrünü kısaltır.\n* **Artan Yakıt Tüketimi:** Yuvarlanma direnci yükselir ve araç daha fazla yakıt tüketir."
+  },
+  {
+    "id": 37,
+    "title": "Yüksek Basınçlı Lastiğin Etkileri",
+    "image_url": "https://i.ibb.co/h7gB4mX/yuksek-basinc.png",
+    "description": "Lastiklere tavsiye edilenden daha fazla hava basmak da en az düşük basınç kadar tehlikelidir ve çeşitli sorunlara yol açar. Başlıca olumsuz etkileri şunlardır:\n\n* **Azalan Yol Tutuşu:** Lastiğin sadece orta kısmı yere temas ettiği için yol ile temas yüzeyi azalır ve yol tutuşu düşer.\n* **Konforsuz Sürüş:** Lastik sertleştiği için yoldaki darbeleri daha fazla hissettirir ve araçta zıplamalar görülür.\n* **Direksiyon Hakimiyetinde Tutarsızlık:** Azalan yol tutuşu, direksiyon hakimiyetini de olumsuz etkiler.\n* **Düzensiz Aşınma:** Lastiğin sadece orta kısmı yere temas ettiğinden, bu bölge hızla aşınır ve lastiğin ömrü kısalır.\n* **Hasar Riskinde Artış:** Sertleşen lastik, yoldaki çukur veya engellerden daha kolay hasar alabilir."
+  },
+  {
+    "id": 38,
+    "title": "Lastik Diş Derinliğinin Önemi",
+    "image_url": "https://i.ibb.co/YyTKyQG/dis-derinligi.png",
+    "description": "Lastik diş derinliği, özellikle ıslak zeminlerde suyu etkili bir şekilde tahliye ederek yol tutuşunu sağlamak için hayati öneme sahiptir.\n\n* **Yasal Sınır:** Binek otomobiller için yasal diş derinliği sınırı 1.6 mm'dir. Diş derinliği bu seviyenin altına düşen lastiklerin kullanılması tehlikeli ve yasaktır.\n* **Düşük Diş Derinliğinin Riskleri:** Diş derinliği azaldıkça lastiğin suyu tahliye etme kapasitesi düşer. Bu durum 'suda kızaklama' (aquaplaning) riskini artırır, ıslak zeminde fren mesafesini uzatır ve virajlarda savrulma riskini yükseltir.\n* **Kontrol:** Lastiklerin diş derinliği düzenli olarak kontrol edilmeli ve yasal sınıra yaklaştığında yenileriyle değiştirilmelidir."
+  }
+]
