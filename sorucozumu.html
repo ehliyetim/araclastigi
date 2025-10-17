@@ -253,7 +253,14 @@
 
   // Başlangıç
   function init() {
+    if (isLoading || quizData.length === 0) {
+      console.error('Quiz başlatılamadı: Veri yok');
+      return;
+    }
     totalSpan.textContent = quizData.length;
+    currentQuestion = 0;
+    correctAnswers = 0;
+    correctCountSpan.textContent = '0';
     loadQuestion();
   }
 
@@ -358,8 +365,8 @@
     `;
   }
 
-  // Başlat
-  init();
+  // Başlat (sayfa yüklendiğinde değil, JSON yüklendikten sonra)
+  // init() artık fetch içinde çağrılıyor
 </script>
 
 </body>
