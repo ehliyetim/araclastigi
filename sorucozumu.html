@@ -208,48 +208,38 @@
 </div>
 
 <script>
-  // Quiz verileri
-  const quizData = [
-    {
-      id: 1,
-      image: "https://via.placeholder.com/600x300/1a2440/ffffff?text=Lastik+Kesit+Genişliği",
-      question: "Lastik boyutunda ilk rakam neyi ifade eder?",
-      options: [
-        "Kesit genişliği (mm)",
-        "Jant çapı",
-        "Yükseklik oranı",
-        "Hız endeksi"
-      ],
-      correct: 0,
-      explanation: "Lastik boyutunda ilk rakam kesit genişliğini milimetre cinsinden gösterir. Örneğin: 205/55R16'da 205, kesit genişliğidir."
-    },
-    {
-      id: 2,
-      image: "https://via.placeholder.com/600x300/1a2440/ffffff?text=Lastik+Diş+Derinliği",
-      question: "Yasal lastik diş derinliği minimum kaç mm olmalıdır?",
-      options: [
-        "1.0 mm",
-        "1.6 mm",
-        "2.0 mm",
-        "3.0 mm"
-      ],
-      correct: 1,
-      explanation: "Türkiye'de yasal minimum lastik diş derinliği 1.6 mm'dir. Ancak güvenlik için 3 mm ve üzeri önerilir."
-    },
-    {
-      id: 3,
-      image: "https://via.placeholder.com/600x300/1a2440/ffffff?text=Hız+Endeksi",
-      question: "'V' hız endeksi kaç km/s maksimum hızı gösterir?",
-      options: [
-        "210 km/s",
-        "240 km/s",
-        "270 km/s",
-        "300 km/s"
-      ],
-      correct: 1,
-      explanation: "V hız endeksi 240 km/s maksimum hız kapasitesini gösterir. Bu, lastik üzerinde yan duvarda belirtilir."
-    }
-  ];
+  // Quiz verilerini JSON'dan yükle
+  let quizData = [];
+  
+  // JSON dosyasını yükle
+  fetch('quiz.json')
+    .then(response => {
+      if (!response.ok) throw new Error('quiz.json yüklenemedi');
+      return response.json();
+    })
+    .then(data => {
+      // JSON formatını uyarla
+      quizData = data.map(q => ({
+        id: q.id,
+        image: q.image_url,
+        question: q.question,
+        options: q.options.map(opt => opt.text),
+        correct: q.options.findIndex(opt => opt.isTrue),
+        explanation: q.description
+      }));
+      init();
+    })
+    .catch(error => {
+      console.error('Quiz yükleme hatası:', error);
+      document.getElementById('quizContent').innerHTML = `
+        <div class="body">
+          <div class="question" style="text-align:center; color:var(--bad)">
+            ❌ Quiz soruları yüklenemedi!<br>
+            <span style="font-size:0.9rem; color:var(--muted)">quiz.json dosyasının varlığını kontrol edin.</span>
+          </div>
+        </div>
+      `;
+    });
 
   let currentQuestion = 0;
   let correctAnswers = 0;
