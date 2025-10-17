@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lastik Bilgisi Quiz</title>
+<style>
+  :root{
+    --bg:#0f1117; --fg:#e7ebf0; --muted:#9aa3ad; --card:#161b22; --card2:#121722;
+    --accent:#4cc3ff; --ok:#1fbf75; --bad:#ff5a6b; --ring:#273146; --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; color:var(--fg); background:linear-gradient(#0b1016,#0f1117 45%,#0b0f16);
+       font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{width:min(980px,92vw); margin:24px auto 56px;}
+  header{padding:10px 4px 18px; text-align:center}
+  header h1{margin:0 0 6px; font-weight:800; letter-spacing:.2px}
+  header p{margin:0; color:var(--muted); font-size:.95rem}
+
+  .card{
+    background:linear-gradient(180deg,var(--card),var(--card2));
+    border:1px solid #20283a; border-radius:var(--radius);
+    box-shadow:0 14px 34px rgba(0,0,0,.38); overflow:hidden;
+  }
+
+  /* üst şerit */
+  .meta{
+    display:flex; gap:10px; align-items:center; justify-content:space-between;
+    padding:14px 16px; border-bottom:1px solid #1f2940; color:#b7c2cf; font-weight:700;
+    background:radial-gradient(900px 200px at -10% -30%, #1a2440, transparent 60%);
+  }
+  .progress{display:flex; gap:8px; align-items:center; font-variant-numeric:tabular-nums;}
+  .badge{display:inline-flex; align-items:center; gap:8px; padding:5px 10px; border-radius:999px;
+         background:var(--accent); color:#0a0f18; font-weight:800; font-size:.75rem}
+
+  /* soru görseli – her oranı TAM göster (contain) */
+  .media{display:grid; place-items:center; background:#0c1119; border-bottom:1px solid #1f2940}
+  .media img{width:100%; height:clamp(200px,36vw,360px); object-fit:contain}
+
+  .body{padding:16px}
+  .question{font-size:1.15rem; font-weight:800; line-height:1.35; margin:6px 0 12px}
+  .opts{display:grid; gap:10px}
+  .opt{
+    padding:12px 14px; border:1px solid var(--ring); background:#0f1521; color:var(--fg);
+    border-radius:12px; cursor:pointer; text-align:left; font-size:1rem;
+    transition:transform .1s ease, border-color .15s ease, background .15s ease;
+  }
+  .opt:hover{transform:translateY(-1px); border-color:#2e3a55}
+  .opt[disabled]{opacity:.65; cursor:not-allowed}
+
+  .opt.correct{border-color:rgba(31,191,117,.6); background:rgba(31,191,117,.12)}
+  .opt.wrong{border-color:rgba(255,90,107,.6); background:rgba(255,90,107,.1)}
+
+  .explain{
+    margin-top:12px; padding:12px 14px; border:1px dashed #3a2330;
+    background:rgba(255,90,107,.08); border-radius:12px; color:#ffdbe0; display:none;
+  }
+
+  .nav{
+    display:flex; justify-content:flex-end; gap:10px; padding:14px 16px 16px;
+    border-top:1px solid #20283a; background:linear-gradient(180deg,#141a26,#121722);
+  }
+  .btn{
+    padding:10px 14px; border-radius:12px; border:1px solid #2b3244; background:#111829;
+    color:var(--fg); font-weight:700; cursor:pointer;
+    transition:transform .1s ease,border-color .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px); border-color:#34415a}
+  .btn.primary{background:var(--accent); color:#0a0f18; border-color:transparent}
+  .btn[disabled]{opacity:.5; cursor:not-allowed}
+
+  .done{padding:26px; text-align:center}
+  .done h2{margin:0 0 8px}
+  .mini{color:#9aa3ad; font-size:.95rem}
+
+  @media (max-width:560px){
+    .media img{height:220px}
+    .question{font-size:1.05rem}
+  }
+</style>
+</head>
+<body>
+ 
