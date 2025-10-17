@@ -54,7 +54,7 @@
   {
     "id": 3004,
     "category": "Araç Tekniği",
-    "question": "Lastik üzerindeki '91' sayısı hangi bilgiyi verir?",
+    "question": "Lastik üzerindeki '87' sayısı hangi bilgiyi verir?",
     "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/yuk_endeksi.png",
     "options": [
       { "text": "Lastiğin hız sınırını", "isTrue": false },
@@ -62,7 +62,7 @@
       { "text": "Lastiğin taşıyabileceği maksimum yük kapasitesini", "isTrue": true },
       { "text": "Lastiğin önerilen hava basıncını", "isTrue": false }
     ],
-    "description": "Jant çapından sonra gelen '91' sayısı, yük endeksidir. Bu kod, lastiğin doğru basınçta taşıyabileceği azami yük miktarını belirtir. 91 yük endeksi 615 kg'a karşılık gelir."
+    "description": "Jant çapından sonra gelen '87' sayısı, yük endeksidir. Bu kod, lastiğin doğru basınçta taşıyabileceği azami yük miktarını belirtir. 87 yük endeksi 630 kg'a karşılık gelir."
   },
   {
     "id": 3005,
@@ -388,5 +388,18 @@
       { "text": "Düzensiz lastik aşınması", "isTrue": false }
     ],
     "description": "Üreticinin önerdiği doğru lastik basıncı, lastiğin yola ideal şekilde temas etmesini sağlar. Bu durum, en iyi yol tutuşunu, en kısa fren mesafesini, en düşük yakıt tüketimini ve en uzun lastik ömrünü beraberinde getirir."
+  },
+  {
+    "id": 3030,
+    "category": "Trafik ve Çevre",
+    "question": "Türkiye'de kış lastiği kullanma zorunluluğu hangi tarihler arasındadır?",
+    "image_url": null,
+    "options": [
+      { "text": "1 Ekim - 1 Şubat", "isTrue": false },
+      { "text": "1 Kasım - 1 Mart", "isTrue": false },
+      { "text": "1 Aralık - 1 Nisan", "isTrue": true },
+      { "text": "1 Ocak - 1 Mayıs", "isTrue": false }
+    ],
+    "description": "Yasalara göre Türkiye'de şehirler arası yük ve yolcu taşıyan ticari araçlar için kış lastiği takma zorunluluğu her yıl 1 Aralık ile 1 Nisan tarihleri arasındadır. Hususi araçlar için valilikler karar alabilmekle birlikte, can ve mal güvenliği için bu tarihlerde tüm araçlarda kış lastiği kullanılması önemlidir."
   }
 ]
