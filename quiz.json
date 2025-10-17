@@ -1,0 +1,392 @@
+[
+  {
+    "id": 3000,
+    "category": "Araç Tekniği",
+    "question": "Görselde lastik üzerinde işaretlenmiş '195' sayısı neyi ifade eder?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/kesit_genisligi.png",
+    "options": [
+      { "text": "Yük endeksi", "isTrue": false },
+      { "text": "Kesit oranı", "isTrue": false },
+      { "text": "Jant çapı", "isTrue": false },
+      { "text": "Kesit genişliği (Taban genişliği)", "isTrue": true }
+    ],
+    "description": "Lastik yanağındaki ilk sayı olan '195', lastiğin yere temas eden taban kısmının milimetre (mm) cinsinden genişliğini belirtir."
+  },
+  {
+    "id": 3001,
+    "category": "Araç Tekniği",
+    "question": "Görselde lastik üzerinde işaretlenmiş '55' sayısı ne anlama gelmektedir?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/kesit_orani.png",
+    "options": [
+      { "text": "Yanak yüksekliğinin taban genişliğine oranını (%)", "isTrue": true },
+      { "text": "Lastiğin maksimum hızını", "isTrue": false },
+      { "text": "Lastiğin inç cinsinden genişliğini", "isTrue": false },
+      { "text": "Lastiğin diş derinliğini (mm)", "isTrue": false }
+    ],
+    "description": "'55' sayısı, lastik yanak yüksekliğinin, 195 mm'lik taban genişliğine olan oranının %55 olduğunu ifade eder. Bu değere kesit oranı denir."
+  },
+  {
+    "id": 3002,
+    "category": "Araç Tekniği",
+    "question": "Lastik üzerindeki 'R' harfi neyi belirtir?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/radikal_lastik.png",
+    "options": [
+      { "text": "Lastiğin üretim yılını", "isTrue": false },
+      { "text": "Lastiğin hız endeksini", "isTrue": false },
+      { "text": "Lastiğin kış lastiği olduğunu", "isTrue": false },
+      { "text": "Lastiğin iç yapısının 'Radyal' olduğunu", "isTrue": true }
+    ],
+    "description": "'R' harfi, lastiğin iç yapısının 'Radyal' olduğunu belirtir. Günümüz modern binek otomobil lastiklerinin neredeyse tamamı bu yapıdadır."
+  },
+  {
+    "id": 3003,
+    "category": "Araç Tekniği",
+    "question": "Görselde işaretli '16' sayısı lastiğin hangi özelliğini belirtir?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/jant_capi.png",
+    "options": [
+      { "text": "Lastiğin milimetre cinsinden yanak yüksekliğini", "isTrue": false },
+      { "text": "Lastiğin takılacağı jantın inç cinsinden çapını", "isTrue": true },
+      { "text": "Lastiğin yasal minimum diş derinliğini", "isTrue": false },
+      { "text": "Lastiğin 16 kat telli olduğunu", "isTrue": false }
+    ],
+    "description": "'R' harfinden sonra gelen '16' sayısı, lastiğin takılabileceği jantın çapını inç cinsinden ifade eder. Bu lastik sadece 16 inçlik jantlara uygundur."
+  },
+  {
+    "id": 3004,
+    "category": "Araç Tekniği",
+    "question": "Lastik üzerindeki '91' sayısı hangi bilgiyi verir?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/yuk_endeksi.png",
+    "options": [
+      { "text": "Lastiğin hız sınırını", "isTrue": false },
+      { "text": "Lastiğin üretim haftasını", "isTrue": false },
+      { "text": "Lastiğin taşıyabileceği maksimum yük kapasitesini", "isTrue": true },
+      { "text": "Lastiğin önerilen hava basıncını", "isTrue": false }
+    ],
+    "description": "Jant çapından sonra gelen '91' sayısı, yük endeksidir. Bu kod, lastiğin doğru basınçta taşıyabileceği azami yük miktarını belirtir. 91 yük endeksi 615 kg'a karşılık gelir."
+  },
+  {
+    "id": 3005,
+    "category": "Araç Tekniği",
+    "question": "Görselde işaretlenmiş olan 'V' harfi ne anlama gelmektedir?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/hiz_endeksi.png",
+    "options": [
+      { "text": "Lastiğin dört mevsim olduğunu", "isTrue": false },
+      { "text": "Lastiğin patlamaya karşı dayanıklı olduğunu", "isTrue": false },
+      { "text": "Lastiğin yapabileceği maksimum hızı", "isTrue": true },
+      { "text": "Lastiğin vakumlu tip olduğunu", "isTrue": false }
+    ],
+    "description": "Lastik kodunun en sonundaki harf olan 'V', hız endeksini belirtir. Bu, lastiğin belirtilen yükte güvenle ulaşabileceği maksimum hızı gösterir. 'V' hız endeksi 240 km/s'tir."
+  },
+  {
+    "id": 3006,
+    "category": "Araç Tekniği",
+    "question": "Aşağıdakilerden hangisi, lastik hava basıncının tavsiye edilen değerden düşük olmasının bir sonucudur?",
+    "image_url": null,
+    "options": [
+      { "text": "Yakıt tüketiminin artması", "isTrue": true },
+      { "text": "Lastiklerin orta kısmının daha hızlı aşınması", "isTrue": false },
+      { "text": "Sürüş konforunun artması", "isTrue": false },
+      { "text": "Fren mesafesinin kısalması", "isTrue": false }
+    ],
+    "description": "Düşük basınçlı lastiklerin yuvarlanma direnci artar. Motor bu direnci yenmek için daha fazla güç harcar, bu da doğrudan yakıt tüketimini artırır. Ayrıca lastiğin omuz kısımları daha hızlı aşınır."
+  },
+  {
+    "id": 3007,
+    "category": "Araç Tekniği",
+    "question": "Düşük basınçlı bir lastikte ne tür bir aşınma beklenir?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/dusuk_basinc_lastik_resmi.png",
+    "options": [
+      { "text": "Sadece orta kısımlarda aşınma", "isTrue": false },
+      { "text": "Sadece kenar (omuz) kısımlarında aşınma", "isTrue": true },
+      { "text": "Tüm yüzeyde eşit aşınma", "isTrue": false },
+      { "text": "Diş aralarında çatlamalar", "isTrue": false }
+    ],
+    "description": "Lastik basıncı düşük olduğunda, lastiğin orta kısmı içeri doğru çöker ve yük kenar (omuz) kısımlarına biner. Bu nedenle, lastiklerin omuzları tabanın ortasından çok daha hızlı aşınır."
+  },
+  {
+    "id": 3008,
+    "category": "Araç Tekniği",
+    "question": "Lastiklere tavsiye edilen değerden daha fazla hava basılması aşağıdakilerden hangisine neden olur?",
+    "image_url": null,
+    "options": [
+      { "text": "Fren mesafesinin kısalmasına", "isTrue": false },
+      { "text": "Yakıt tüketiminin artmasına", "isTrue": false },
+      { "text": "Lastiklerin tabanının orta kısmının aşırı aşınmasına", "isTrue": true },
+      { "text": "Yol tutuşunun artmasına", "isTrue": false }
+    ],
+    "description": "Lastiklere fazla hava basıldığında lastik yüzeyi dışa doğru şişer. Bu durumda lastik, yola sadece orta kısmıyla temas eder. Sonuç olarak, tabanın orta kısmı kenarlara göre çok daha hızlı aşınır."
+  },
+  {
+    "id": 3009,
+    "category": "Araç Tekniği",
+    "question": "Yüksek basınçlı lastiklerle seyahat etmenin sürüşe etkisi aşağıdakilerden hangisidir?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/yuksek_basinc_lastik_resmi.png",
+    "options": [
+      { "text": "Daha iyi yol tutuşu ve konforlu sürüş", "isTrue": false },
+      { "text": "Islak zeminde kayma riskinin azalması", "isTrue": false },
+      { "text": "Sert ve konforsuz bir sürüşe neden olması", "isTrue": true },
+      { "text": "Direksiyonun yumuşaması", "isTrue": false }
+    ],
+    "description": "Aşırı şişirilmiş lastikler sertleşir ve yol yüzeyindeki bozuklukları emme kabiliyetleri azalır. Bu durum, aracın daha fazla zıplamasına ve sürüşün sert, konforsuz olmasına yol açar."
+  },
+  {
+    "id": 3010,
+    "category": "Araç Tekniği",
+    "question": "Binek otomobil lastikleri için yasal olarak izin verilen en düşük diş derinliği kaç milimetredir?",
+    "image_url": "https://ehliyetim.github.io/konu-anlatimi/images/lastik_dis_derinligi_166mm.png",
+    "options": [
+      { "text": "3 mm", "isTrue": false },
+      { "text": "2.5 mm", "isTrue": false },
+      { "text": "1 mm", "isTrue": false },
+      { "text": "1.6 mm", "isTrue": true }
+    ],
+    "description": "Yasalar gereği, binek otomobil lastiklerinin diş derinliği 1.6 mm'den az olmamalıdır. Bu sınırın altındaki lastikler tehlikelidir ve muayeneden geçemez."
+  },
+  {
+    "id": 3011,
+    "category": "Araç Tekniği",
+    "question": "Lastik diş derinliğinin azalması, özellikle hangi durumda tehlike oluşturur?",
+    "image_url": null,
+    "options": [
+      { "text": "Kuru ve sıcak havalarda", "isTrue": false },
+      { "text": "Karlı yollarda", "isTrue": false },
+      { "text": "Yağışlı havalarda ve ıslak zeminlerde", "isTrue": true },
+      { "text": "Düşük hızla seyahat ederken", "isTrue": false }
+    ],
+    "description": "Lastik dişlerinin temel görevi, ıslak zeminlerde suyu lastik ile yol arasından tahliye etmektir. Diş derinliği azaldığında su tahliyesi yetersiz kalır ve 'suda kızaklama' (aquaplaning) riski artar."
+  },
+  {
+    "id": 3012,
+    "category": "Araç Tekniği",
+    "question": "Lastiğin yanak yüksekliğinin taban genişliğine yüzde olarak oranını ifade eden değere ne ad verilir?",
+    "image_url": null,
+    "options": [
+      { "text": "Kesit Oranı", "isTrue": true },
+      { "text": "Jant Çapı", "isTrue": false },
+      { "text": "Yük Endeksi", "isTrue": false },
+      { "text": "Hız Endeksi", "isTrue": false }
+    ],
+    "description": "Örneğin, '195/55' ölçüsündeki bir lastikte '55', yanak yüksekliğinin 195 mm'lik taban genişliğinin %55'i olduğunu gösterir. Bu değere kesit oranı veya yanak oranı denir."
+  },
+  {
+    "id": 3013,
+    "category": "Araç Tekniği",
+    "question": "Bir lastik ölçüsünde 'R' harfinden sonra gelen sayı, hangi birimle neyi ifade eder?",
+    "image_url": null,
+    "options": [
+      { "text": "Milimetre cinsinden taban genişliğini", "isTrue": false },
+      { "text": "Yüzde olarak yanak yüksekliğini", "isTrue": false },
+      { "text": "İnç cinsinden jant çapını", "isTrue": true },
+      { "text": "Kilogram cinsinden taşıma kapasitesini", "isTrue": false }
+    ],
+    "description": "Örneğin, 'R16' ifadesindeki '16', lastiğin monte edileceği jantın çapının 16 inç olduğunu belirtir. Bu ölçü her zaman inç cinsindendir."
+  },
+  {
+    "id": 3014,
+    "category": "Araç Tekniği",
+    "question": "Lastik hava basınçları ne zaman kontrol edilmelidir?",
+    "image_url": null,
+    "options": [
+      { "text": "Uzun bir yolculuktan hemen sonra", "isTrue": false },
+      { "text": "Lastikler sıcakken", "isTrue": false },
+      { "text": "Lastikler soğukken (araç kullanılmadan önce)", "isTrue": true },
+      { "text": "Sadece lastik gözle sönük göründüğünde", "isTrue": false }
+    ],
+    "description": "Araç kullanıldığında lastikler ısınır ve içindeki havanın basıncı artar. Doğru ölçüm için üreticinin tavsiye ettiği basınç değerleri, lastikler soğukken ayarlanmalıdır."
+  },
+  {
+    "id": 3015,
+    "category": "Araç Tekniği",
+    "question": "Bir araç lastiğinin üzerinde '205/55 R16 91V' yazmaktadır. Bu koddaki '205' sayısı neyi ifade eder?",
+    "image_url": null,
+    "options": [
+      { "text": "Lastiğin yanak yüksekliğini (mm)", "isTrue": false },
+      { "text": "Lastiğin taban genişliğini (mm)", "isTrue": true },
+      { "text": "Lastiğin jant çapını (inç)", "isTrue": false },
+      { "text": "Lastiğin yük endeksini", "isTrue": false }
+    ],
+    "description": "Lastik ölçüsündeki ilk sayı olan '205', lastiğin milimetre cinsinden taban genişliğini gösterir."
+  },
+  {
+    "id": 3016,
+    "category": "Araç Tekniği",
+    "question": "Bir araç lastiğinin üzerinde '205/55 R16 91V' yazmaktadır. Bu koddaki '91' sayısı neyi ifade eder?",
+    "image_url": null,
+    "options": [
+      { "text": "Lastiğin hız endeksini", "isTrue": false },
+      { "text": "Lastiğin üretim yılını", "isTrue": false },
+      { "text": "Lastiğin taşıma kapasitesini (Yük Endeksi)", "isTrue": true },
+      { "text": "Lastiğin yanak oranını", "isTrue": false }
+    ],
+    "description": "'91' sayısı yük endeksidir ve lastiğin tek başına taşıyabileceği maksimum yükü belirtir. 91 yük endeksi, 615 kg'lık bir taşıma kapasitesine karşılık gelir."
+  },
+  {
+    "id": 3017,
+    "category": "Araç Tekniği",
+    "question": "Suda kızaklama (aquaplaning) riskini artıran en önemli faktör aşağıdakilerden hangisidir?",
+    "image_url": null,
+    "options": [
+      { "text": "Yüksek lastik basıncı", "isTrue": false },
+      { "text": "Aşınmış lastikler (düşük diş derinliği)", "isTrue": true },
+      { "text": "Geniş tabanlı lastikler", "isTrue": false },
+      { "text": "Yeni lastikler", "isTrue": false }
+    ],
+    "description": "Suda kızaklama, lastiklerin suyu tahliye edemeyip su birikintisi üzerinde kayması durumudur. Diş derinliği azalmış, yani aşınmış lastikler suyu etkili bir şekilde tahliye edemediği için bu riski büyük ölçüde artırır."
+  },
+  {
+    "id": 3018,
+    "category": "Araç Tekniği",
+    "question": "Aracın sadece iki lastiği değiştirilecekse, yeni lastikler hangi aksa takılmalıdır?",
+    "image_url": null,
+    "options": [
+      { "text": "Ön aksa takılmalıdır", "isTrue": false },
+      { "text": "Arka aksa takılmalıdır", "isTrue": true },
+      { "text": "Çekişin olduğu aksa takılmalıdır", "isTrue": false },
+      { "text": "Fark etmez, herhangi bir aksa takılabilir", "isTrue": false }
+    ],
+    "description": "Sürüş güvenliği açısından, yeni veya diş derinliği daha fazla olan lastiklerin her zaman arka aksa takılması önerilir. Bu, özellikle virajlarda ve ıslak zeminlerde aracın arkasının savrulma riskini azaltır."
+  },
+  {
+    "id": 3019,
+    "category": "Araç Tekniği",
+    "question": "Bir lastiğin sadece iç veya dış omuzlarında düzensiz bir aşınma varsa, en olası sebep aşağıdakilerden hangisidir?",
+    "image_url": null,
+    "options": [
+      { "text": "Düşük lastik basıncı", "isTrue": false },
+      { "text": "Yüksek lastik basıncı", "isTrue": false },
+      { "text": "Bozuk rot ayarı", "isTrue": true },
+      { "text": "Bozuk amortisörler", "isTrue": false }
+    ],
+    "description": "Lastiklerin yola tam dik basmasını sağlayan rot ayarlarında bir bozukluk varsa, lastiklerin iç veya dış kenarları yere daha fazla sürtünür ve bu da düzensiz aşınmaya neden olur."
+  },
+  {
+    "id": 3020,
+    "category": "Araç Tekniği",
+    "question": "Kış lastiklerinin yaz lastiklerinden temel farkı nedir?",
+    "image_url": null,
+    "options": [
+      { "text": "Daha sert bir hamura sahip olmaları", "isTrue": false },
+      { "text": "Daha düşük yük endeksine sahip olmaları", "isTrue": false },
+      { "text": "Soğuk havada sertleşmeyen özel hamurları ve daha fazla kılcal kanalları olması", "isTrue": true },
+      { "text": "Daha yüksek hız endeksine sahip olmaları", "isTrue": false }
+    ],
+    "description": "Kış lastikleri, 7°C'nin altındaki sıcaklıklarda esnekliğini koruyan özel bir kauçuk bileşiminden yapılır. Ayrıca, karlı ve buzlu zeminlerde tutunmayı artırmak için üzerlerinde çok sayıda ince kılcal kanal bulunur."
+  },
+  {
+    "id": 3021,
+    "category": "Araç Tekniği",
+    "question": "Hem düşük hem de yüksek lastik basıncının ortak sonucu aşağıdakilerden hangisidir?",
+    "image_url": null,
+    "options": [
+      { "text": "Yakıt tüketimini azaltması", "isTrue": false },
+      { "text": "Lastik ömrünü uzatması", "isTrue": false },
+      { "text": "Lastiğin düzensiz aşınması ve yol tutuşunun zayıflaması", "isTrue": true },
+      { "text": "Sürüş konforunu artırması", "isTrue": false }
+    ],
+    "description": "Her iki durumda da (düşük basınçta kenarlar, yüksek basınçta orta kısım) lastik tabanı yola dengesiz temas eder. Bu durum hem lastiğin düzensiz aşınmasına neden olarak ömrünü kısaltır hem de yol tutuşunu zayıflatır."
+  },
+  {
+    "id": 3022,
+    "category": "Araç Tekniği",
+    "question": "Aracın fabrika tarafından önerilen doğru lastik basınç değerleri genellikle nerede yazar?",
+    "image_url": null,
+    "options": [
+      { "text": "Lastiğin yanağında", "isTrue": false },
+      { "text": "Sadece aracın kullanım kılavuzunda", "isTrue": false },
+      { "text": "Sürücü kapısının iç kısmındaki etikette veya yakıt deposu kapağında", "isTrue": true },
+      { "text": "Ruhsat belgesinde", "isTrue": false }
+    ],
+    "description": "Lastiğin yanağında yazan basınç değeri, lastiğin dayanabileceği maksimum basınçtır. Aracınız için doğru olan basınç değerleri ise genellikle sürücü kapısı içindeki etikette veya yakıt deposu kapağında belirtilir."
+  },
+  {
+    "id": 3023,
+    "category": "Araç Tekniği",
+    "question": "Lastik basıncının gereğinden yüksek olması frenlemeyi nasıl etkiler?",
+    "image_url": null,
+    "options": [
+      { "text": "Etkilemez", "isTrue": false },
+      { "text": "Fren mesafesini kısaltır", "isTrue": false },
+      { "text": "Fren mesafesini uzatır", "isTrue": true },
+      { "text": "Fren balatalarının daha çabuk ısınmasına neden olur", "isTrue": false }
+    ],
+    "description": "Yüksek basınç nedeniyle lastiğin yolla temas eden alanı küçülür. Temas yüzeyinin azalması, yol tutuşunu ve dolayısıyla fren performansını olumsuz etkiler, bu da fren mesafesinin uzamasına yol açar."
+  },
+  {
+    "id": 3024,
+    "category": "Araç Tekniği",
+    "question": "Diş derinliği yeterli olsa bile, lastiklerin belirli bir süre sonunda değiştirilmesi önerilir. Bu süre genellikle üretim tarihinden itibaren ne kadardır?",
+    "image_url": null,
+    "options": [
+      { "text": "2 yıl", "isTrue": false },
+      { "text": "5 yıl", "isTrue": false },
+      { "text": "10 yıl", "isTrue": true },
+      { "text": "Değiştirmeye gerek yoktur", "isTrue": false }
+    ],
+    "description": "Lastiğin yapıldığı kauçuk malzeme zamanla esnekliğini ve özelliklerini kaybeder. Bu nedenle, diş derinliği yasal sınırın üzerinde olsa bile, üretim tarihinden itibaren 10 yılı geçmiş lastiklerin güvenlik nedeniyle değiştirilmesi tavsiye edilir."
+  },
+  {
+    "id": 3025,
+    "category": "Araç Tekniği",
+    "question": "Düşük basınçlı lastikler direksiyon hakimiyetini nasıl etkiler?",
+    "image_url": null,
+    "options": [
+      { "text": "Direksiyon tepkilerini hızlandırır", "isTrue": false },
+      { "text": "Direksiyonu daha hassas hale getirir", "isTrue": false },
+      { "text": "Direksiyon tepkilerini yavaşlatır ve aracı hantallaştırır", "isTrue": true },
+      { "text": "Direksiyonu etkilemez", "isTrue": false }
+    ],
+    "description": "Düşük basınç nedeniyle lastik yanakları aşırı esner. Bu esneme, sürücünün direksiyon hareketlerinin yola daha geç ve belirsiz bir şekilde iletilmesine neden olur. Bu durum, aracın tepkilerini yavaşlatır."
+  },
+  {
+    "id": 3026,
+    "category": "Araç Tekniği",
+    "question": "Aşağıdakilerden hangisi patlamış bir lastikle seyahat etmenin sonuçlarından biri değildir?",
+    "image_url": null,
+    "options": [
+      { "text": "Aracın kontrolünün zorlaşması", "isTrue": false },
+      { "text": "Jantın hasar görmesi", "isTrue": false },
+      { "text": "Fren sisteminin daha iyi çalışması", "isTrue": true },
+      { "text": "Diğer lastiklere aşırı yük binmesi", "isTrue": false }
+    ],
+    "description": "Patlamış bir lastik, aracın dengesini bozar, kontrolünü zorlaştırır, janta zarar verir ve diğer lastiklere fazladan yük bindirir. Fren sisteminin performansını ise olumsuz yönde etkiler."
+  },
+  {
+    "id": 3027,
+    "category": "Araç Tekniği",
+    "question": "Aracın lastikleri üzerinde yapılan balans ayarının amacı nedir?",
+    "image_url": null,
+    "options": [
+      { "text": "Lastiklerin daha parlak görünmesini sağlamak", "isTrue": false },
+      { "text": "Tekerleğin dönüş sırasında titreşim yapmasını önlemek", "isTrue": true },
+      { "text": "Lastiklerin diş derinliğini artırmak", "isTrue": false },
+      { "text": "Fren mesafesini kısaltmak", "isTrue": false }
+    ],
+    "description": "Balans ayarı, lastik ve jantın ağırlığının tekerlek düzeneği üzerinde eşit olarak dağıtılmasını sağlar. Bu ayar, belirli hızlarda direksiyonda veya araçta meydana gelebilecek titreşimleri önler."
+  },
+  {
+    "id": 3028,
+    "category": "Araç Tekniği",
+    "question": "Lastik üzerindeki 'DOT' ile başlayan kod ne anlama gelir?",
+    "image_url": null,
+    "options": [
+      { "text": "Lastiğin hız endeksini", "isTrue": false },
+      { "text": "Lastiğin yük kapasitesini", "isTrue": false },
+      { "text": "Lastiğin üretim tarihini ve diğer fabrika bilgilerini", "isTrue": true },
+      { "text": "Lastiğin jant çapını", "isTrue": false }
+    ],
+    "description": "DOT (Department of Transportation) kodu, lastiğin güvenlik standartlarına uygun olduğunu belirtir. Bu kodun son dört rakamı lastiğin üretildiği hafta ve yılı gösterir (Örn: '3523', 2023'ün 35. haftası)."
+  },
+  {
+    "id": 3029,
+    "category": "Araç Tekniği",
+    "question": "Aşağıdakilerden hangisi doğru lastik basıncının sağladığı avantajlardan biridir?",
+    "image_url": null,
+    "options": [
+      { "text": "Daha yüksek yakıt tüketimi", "isTrue": false },
+      { "text": "Daha uzun fren mesafesi", "isTrue": false },
+      { "text": "Maksimum yol tutuşu ve daha uzun lastik ömrü", "isTrue": true },
+      { "text": "Düzensiz lastik aşınması", "isTrue": false }
+    ],
+    "description": "Üreticinin önerdiği doğru lastik basıncı, lastiğin yola ideal şekilde temas etmesini sağlar. Bu durum, en iyi yol tutuşunu, en kısa fren mesafesini, en düşük yakıt tüketimini ve en uzun lastik ömrünü beraberinde getirir."
+  }
+]
